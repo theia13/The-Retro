@@ -1,17 +1,18 @@
-from django.db import models
 from django.contrib.auth.models import User
-
+from django.db import models
 
 class Category(models.Model):
-    name = models.CharField(max_length=225)
+    name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='category_images', blank=True, null=True)  # Add this line
 
     class Meta:
-        ordering= ('name',)
+        ordering = ('name',)
         verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.name
-    
+
+
 class Item(models.Model):
     category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
@@ -21,6 +22,6 @@ class Item(models.Model):
     is_sold = models.BooleanField(default=False)
     created_by = models.ForeignKey(User, related_name='items', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-
+    
     def __str__(self):
         return self.name
