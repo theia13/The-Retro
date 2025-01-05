@@ -47,8 +47,13 @@ INSTALLED_APPS = [
     'core',
     'dashboard',
     'item',
+    'tailwind',
+ 
     
 ]
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

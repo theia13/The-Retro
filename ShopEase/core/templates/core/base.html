@@ -9,22 +9,28 @@
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
   </head>
-  <body class="bg-[#F5EEEA]">
-    <nav class="py-8 px-6 flex justify-between items-center bg-[#4A4C44] shadow-lg sticky top-0 z-50">
-      <a href="/" class="text-2xl font-serif font-semibold text-white"> ShopEase</a>
+  <body class="bg-[#ede0d4]">
+    <nav class="py-6 px-6 flex justify-between items-center bg-[#0C2A24] shadow-lg sticky top-0 z-50">
+      <a href="/" class="text-2xl font-sans-serif font-semibold text-white transform transition-all duration-300 ease-in-out  hover:scale-105"> ShopEase</a>
     
       <div class="space-x-6">
-        <a href="{% url 'item:new' %}" class="text-lg font-semibold text-white hover:text-[#F3EEEA] transition duration-300">New Item</a>
-        <a href="{% url 'item:items' %}" class="text-lg font-semibold text-white hover:text-[#F3EEEA] transition duration-300">Browse</a>
+        <a href="{% url 'item:new' %}" class="inline-block text-lg  font-semibold text-white transform transition-all duration-300 ease-in-out  hover:scale-105">New Item</a>
+        <a href="{% url 'item:items' %}" class="inline-block text-lg font-semibold text-white transform transition-all duration-300 ease-in-out  hover:scale-105">Browse</a>
     
         {% if request.user.is_authenticated %}
-        <a href="{% url 'conversation:inbox' %}" class="px-6 py-4 text-lg font-semibold bg-[#D08903] rounded-lg text-white hover:bg-amber-600 transition rounded-full  transition-all duration-300 ease-in-out transform hover:translate-x-2">Inbox</a>
-        <a href="{% url 'dashboard:index' %}" class="px-6 py-4 text-lg font-semibold text-white bg-[#D08903] rounded-xl hover:bg-white hover:text-[#D08903] transition-all duration-300 ease-in-out transform hover:translate-x-2">Dashboard</a>
+        <a href="{% url 'conversation:inbox' %}" class="inline-block px-6 py-2 text-lg font-semibold text-white bg-[#dd9521] rounded-md transform transition-all duration-300 ease-in-out hover:translate-y-[-2px] hover:shadow-xl">
+         Inbox
+     </a>
+  
+     <a href="{% url 'dashboard:index' %}" class="inline-block px-6 py-2 text-lg font-semibold text-white bg-[#dd9521] rounded-md transform transition-all duration-300 ease-in-out hover:translate-y-[-2px] hover:shadow-xl">
+         Dashboard
+     </a>
+     
         {% else %}
-        <a href="{% url 'core:signup' %}" class="px-6 py-4 text-lg font-semibold bg-[#F5EEEA] rounded-lg text-black hover:bg-amber-600 hover:text-white transition rounded-full  transition-all duration-300 ease-in-out transform hover:translate-x-2">Signup</a>
-        <a href="{% url 'core:login' %}" class="px-6 py-4 text-lg font-semibold bg-[#BDB198] rounded-lg text-black hover:bg-amber-600 hover:text-white transition rounded-full  transition-all duration-300 ease-in-out transform hover:translate-x-2">Login</a>
+        <a href="{% url 'core:signup' %}" class="px-6 py-4 text-lg font-semibold bg-[#F5EEEA] rounded-lg text-black hover:bg-[#dd9521] hover:text-white transition rounded-full  transition-all duration-300 ease-in-out ">Signup</a>
+        <a href="{% url 'core:login' %}" class="px-6 py-4 text-lg font-semibold bg-[#BDB198] rounded-lg text-black hover:bg-[#dd9521] hover:text-white transition rounded-full  transition-all duration-300 ease-in-out ">Login</a>
         {% endif %}
       </div>
     </nav>
@@ -33,12 +39,12 @@
       {% endblock %}
     </div>
     
-    <footer class="py-6 px-6 bg-[#4A4C44] text-white">
+    <footer class="py-6 px-6 bg-[#0C2A24] text-white">
       <div class="flex justify-between">
         <!-- About Section -->
         <div class="w-2/3 pr-10">
           <h3 class="mb-5 font-semibold text-gray-300">About Us</h3>
-          <p class="text-lg text-gray-200">
+          <p class="text-md text-gray-400">
             ShopEase is your go-to online marketplace for buying and selling high-quality used items at affordable prices. Whether you're looking for electronics, furniture, clothing, or more, we ensure that every product on our platform is verified for quality and value. Our mission is to make second-hand shopping simple, convenient, and trustworthy, providing you with the best deals without compromising on quality.
           </p>
         </div>
@@ -48,16 +54,16 @@
           <h3 class="mb-5 font-semibold text-gray-300">Quick Links</h3>
           <ul class="space-y-2">
             <li>
-              <a href="#" class="text-lg text-[#D08903] hover:text-[#B57202]">About</a>
+              <a href="#" class="text-lg text-[#dd9521] hover:text-[#B57202]">About</a>
             </li>
             <li>
-              <a href="{% url 'core:contact' %}" class="text-lg text-[#D08903] hover:text-[#B57202]">Contact</a>
+              <a href="{% url 'core:contact' %}" class="text-lg text-[#dd9521] hover:text-[#B57202]">Contact</a>
             </li>
             <li>
-              <a href="#" class="text-lg text-[#D08903] hover:text-[B57202]">Privacy Policy</a>
+              <a href="#" class="text-lg text-[#dd9521] hover:text-[#B57202]">Privacy Policy</a>
             </li>
             <li>
-              <a href="#" class="text-lg text-[#D08903] hover:text-[#B57202]">Terms of Use</a>
+              <a href="#" class="text-lg text-[#dd9521] hover:text-[#B57202]">Terms of Use</a>
             </li>
           </ul>
         </div>
@@ -65,23 +71,24 @@
     
       <!-- Social Media Section -->
       <div class="flex justify-center space-x-6 mt-6">
-        <a href="https://www.facebook.com" target="_blank" class="text-2xl text-teal-500 hover:text-teal-700">
+        <a href="https://www.facebook.com" target="_blank" class="text-2xl text-white ">
           <i class="fab fa-facebook"></i> <!-- Facebook Icon -->
         </a>
-        <a href="https://twitter.com" target="_blank" class="text-2xl text-teal-500 hover:text-teal-700">
+        <a href="https://twitter.com" target="_blank" class="text-2xl text-white ">
           <i class="fab fa-twitter"></i> <!-- Twitter Icon -->
         </a>
-        <a href="https://www.linkedin.com" target="_blank" class="text-2xl text-teal-500 hover:text-teal-700">
+        <a href="https://www.linkedin.com" target="_blank" class="text-2xl text-white ">
           <i class="fab fa-linkedin"></i> <!-- LinkedIn Icon -->
         </a>
-        <a href="https://www.instagram.com" target="_blank" class="text-2xl text-teal-500 hover:text-teal-700">
+        <a href="https://www.instagram.com" target="_blank" class="text-2xl text-white ">
           <i class="fab fa-instagram"></i> <!-- Instagram Icon -->
         </a>
       </div>
     
       <!-- Copyright -->
-      <div class="mt-6 text-center text-gray-300">
+      <div class="mt-6 text-center text-gray-400">
         <p>&copy; 2025 ShopEase. All rights reserved.</p>
       </div>
     </footer>
-    
+
+  </body>
