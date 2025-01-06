@@ -3,4 +3,15 @@
 @tailwind utilities;
 
 
-  
+@font-face {
+    font-family: 'Queenaldo';
+    src: url('/static/fonts/main.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+.logo{
+    font-family: 'Queenaldo', sans-serif;
+}
+
