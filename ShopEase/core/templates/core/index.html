@@ -7,79 +7,118 @@ Welcome
 
 {% block content %}
 <!-- Hero section -->
-<div class="hero-section h-[74vh] bg-[#F5EEEA] text-white flex items-center justify-center rounded-xl ">
+<div class="hero-section h-[74vh] bg-[#F5EEEA] text-white flex items-center justify-center rounded-xl">
   <div class="text-center">
-    <h1 class="text-8xl font-serif mb-4 text-[#28282B]">
-      Discover <span class="text-[#dd9521] italic">Top Deals</span> in<br>
-      Our Marketplace
+    <h1 class="text-8xl font-serif mb-4 text-[#28282B] opacity-0" style="animation: fadeInUp 0.5s ease-out forwards;">
+      Timeless <span class="text-[#7f5539] italic">Beauty</span><br>
+      in Every Piece 
     </h1>
-    <p class="text-lg mb-6 text-[#4A4C44] mb-8">Discover the best deals and newest items available now!</p>
+    <p class="text-lg text-[#4A4C44] mb-8 opacity-0" style="animation: fadeInUp 0.5s ease-out forwards; animation-delay: 200ms;">
+      Unearth the finest classics available in our marketplace!
+    </p>
     <a 
-    href="#" 
-    class="bg-[#0C2A24] text-white py-4 px-8 rounded-lg no-underline inline-flex items-center gap-2 font-medium transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#0C2A24]/50"
-  >
-    Shop Now
-    <i data-feather="arrow-right"></i>
-  </a>
-  
-  <script>
-    // Initialize Feather icons
-    feather.replace();
-  </script>
-  
+      href="#" 
+      class="bg-[#0C2A24] text-white py-4 px-8 rounded-lg no-underline inline-flex items-center gap-2 font-medium transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#7f5539]/50 hover:bg-[#7f5539] opacity-0"
+      style="animation: fadeInUp 0.5s ease-out forwards; animation-delay: 400ms;"
+    >
+      Shop Now
+      <i data-feather="arrow-right"></i>
+    </a>
   </div>
 </div>
 
+<style>
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
 
-<div class="mt-6 px-6 py-12 rounded-xl bg-[#F5EEEA]">
+<script>
+  // Initialize Feather icons
+  feather.replace();
+</script>
+
+
+<div id="feature-section" class="mt-6 px-6 py-12 rounded-xl bg-[#F5EEEA] opacity-0">
   <h2 class="mb-12 text-3xl font-sans-serif font-bold text-center text-[#0C2A24]">
     Featured Items
   </h2>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
     {% for item in items %}
     <div class="group relative">
       <a href="{% url 'item:detail' item.id %}" class="block">
-        <!-- Image Section with increased height and rounded corners -->
-        <div class="relative overflow-hidden rounded-t-xl h-[300px] rounded-b-xl"> <!-- Bottom corners rounded -->
+        <div class="relative overflow-hidden rounded-t-xl h-[300px] rounded-b-xl">
           <img
             src="{{ item.image.url }}"
             alt="{{ item.name }}"
             class="w-full h-full object-cover bg-white transition-transform duration-300 transform group-hover:scale-105"
           />
-          <!-- Overlay with Gradient -->
-          <div class="absolute inset-0 bg-gradient-to-t from-[#61827E] via-[#61827E]/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#7f5539] via-[#7f5539]/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
 
-        <!-- Hover Content: Item Name & Price at the bottom -->
         <div class="absolute bottom-0 left-0 right-0 p-4 rounded-b-xl bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out transform group-hover:translate-y-2">
-          
           <p class="text-lg font-medium text-white opacity-75 group-hover:opacity-100 transform group-hover:scale-105 transition-all duration-300 ease-in-out">${{ item.price | floatformat:2 }}</p>
           <p class="text-sm text-white opacity-80 line-clamp-2">
             {{ item.description | truncatewords:20 }}
-        </p>
-        
-
+          </p>
         </div>
-        
       </a>
     </div>
     {% endfor %}
   </div>
 </div>
 
+<style>
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Start from below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at original position */
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 1s ease-out forwards; /* Use the new animation */
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const featureSection = document.getElementById('feature-section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        featureSection.classList.add('fade-in');
+        observer.unobserve(featureSection); // Stop observing after it has faded in
+      }
+    });
+  }, { threshold: 0.1 }); // Trigger when at least 10% of the section is visible
+
+  observer.observe(featureSection);
+});
+</script>
 
 
-
-
-<div class="mt-6 px-6 py-12 rounded-xl bg-[#F5EEEA]">
+<div id="categories-section" class="mt-6 px-6 py-12 rounded-xl bg-[#F5EEEA] opacity-0">
   <h2 class="mb-12 text-3xl font-sans-serif text-center font-bold text-[#0C2A24]">
     Categories
   </h2>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
     {% for category in categories %}
-    <div class="category-card relative group cursor-pointer rounded-xl overflow-hidden">
+    <div class="category-card relative group cursor-pointer rounded-xl overflow-hidden item" style="--i: {{ forloop.counter0 }};">
       <a href="#">
         <!-- Background Image -->
         <div class="category relative w-full h-[300px]">
@@ -95,8 +134,7 @@ Welcome
           <!-- Hover Content -->
           <div class="category-hover-content absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition duration-500 text-white">
             <h2 class="text-3xl font-bold mb-2 text-center">{{ category.name }}</h2>
-      
-            <span class="px-4 py-2 bg-[#dd9521] rounded-full text-sm font-medium transition">Explore More</span>
+            <span class="px-4 py-2 bg-[#7f5539] rounded-full text-sm font-medium transition">Explore More</span>
           </div>
         </div>
       </a>
@@ -104,6 +142,46 @@ Welcome
     {% endfor %}
   </div>
 </div>
+
+<style>
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.item {
+  opacity: 0; /* Initially hidden */
+  animation: fadeInUp 1s ease-out forwards; /* Apply fade-in animation */
+  animation-delay: calc(var(--i) * 100ms); /* Stagger effect */
+}
+
+.fade-in {
+  opacity: 1; /* Ensure the section is visible */
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const categoriesSection = document.getElementById('categories-section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        categoriesSection.classList.add('fade-in');
+        observer.unobserve(categoriesSection); // Stop observing after it has faded in
+      }
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(categoriesSection);
+});
+</script>
 
 
 {% endblock %}

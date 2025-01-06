@@ -3,25 +3,41 @@
 {% block title %}Conversation{% endblock %}
 
 {% block content %}
-<h1 class="mb-6 text-3xl">Conversation</h1>
+<!-- Centered container for chat -->
+<div class="flex justify-center px-6 py-8">
+    <div class="w-full max-w-5xl bg-white rounded-xl shadow-md p-4"> <!-- Reduced width and padding -->
 
-<div class="space-y-6">
-    {% for message in conversation.messages.all %}
-        <div class="p-6 flex {% if message.created_by == request.user %}bg-blue-100 {% else %} bg-gray-100 {% endif %} rounded-xl">
-            <div>
-                <p class="mb-4"><strong>{{ message.created_by.username }}  </strong> @ {{ message.created_at }}</p>
-                <p>{{ message.content }} </p>
-            </div>
+        <h1 class="mb-4 text-2xl text-center text-[#06373E] font-sans-serif font-semibold">Conversation</h1> <!-- Reduced text size -->
+
+        <!-- Chat Messages -->
+        <div class="space-y-3 mb-4">
+            {% for message in conversation.messages.all %}
+                <div class="flex {% if message.created_by == request.user %}justify-end{% else %}justify-start{% endif %} p-2">
+                    <!-- Message bubble -->
+                    <div class="max-w-2xl {% if message.created_by == request.user %}bg-[#345D5E] text-white{% else %}bg-[#BCCCBE] text-black{% endif %} p-3 rounded-lg"> <!-- Reduced padding -->
+                        <p class="mb-1 text-sm font-semibold"> <!-- Reduced text size -->
+                            {{ message.created_by.username }} @ {{ message.created_at }}
+                        </p>
+                        <p class="text-md">{{ message.content }}</p> <!-- Reduced text size -->
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+
+        <!-- Message Input Section -->
+        <form method="post" action="." class="flex mt-4">
+            {% csrf_token %}
+            <div class="w-full flex items-center">
+                <!-- Textarea for message input -->
+                <textarea id="content" name="content" class="w-full h-16 p-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Type your message...">{{ form.content.value|default:'' }}</textarea> <!-- Reduced height and padding -->
+            </div>
+
+            <!-- Send Button -->
+            <button class="ml-4 px-4 py-2 bg-[#06373E] text-white rounded-xl hover:bg-[#345D5E] transition"> <!-- Reduced size -->
+                Send
+            </button>
+        </form>
+
+    </div>
 </div>
-
-<form method="post" action="." class="mt-6">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-
-    <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Send</button>
-
-</form>
 {% endblock %}

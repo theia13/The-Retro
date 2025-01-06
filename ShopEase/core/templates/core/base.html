@@ -4,36 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>{% block title %} {% endblock %} | ShopEase</title>
+    <title>{% block title %} {% endblock %} | The Retro Room</title>
     {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
   </head>
   <body class="bg-[#ede0d4]">
-    <nav class="py-6 px-6 flex justify-between items-center bg-[#0C2A24] shadow-lg sticky top-0 z-50">
-      <a href="/" class="text-2xl font-sans-serif font-semibold text-white transform transition-all duration-300 ease-in-out  hover:scale-105"> ShopEase</a>
-    
-      <div class="space-x-6">
-        <a href="{% url 'item:new' %}" class="inline-block text-lg  font-semibold text-white transform transition-all duration-300 ease-in-out  hover:scale-105">New Item</a>
-        <a href="{% url 'item:items' %}" class="inline-block text-lg font-semibold text-white transform transition-all duration-300 ease-in-out  hover:scale-105">Browse</a>
-    
-        {% if request.user.is_authenticated %}
-        <a href="{% url 'conversation:inbox' %}" class="inline-block px-6 py-2 text-lg font-semibold text-white bg-[#dd9521] rounded-md transform transition-all duration-300 ease-in-out hover:translate-y-[-2px] hover:shadow-xl">
-         Inbox
-     </a>
-  
-     <a href="{% url 'dashboard:index' %}" class="inline-block px-6 py-2 text-lg font-semibold text-white bg-[#dd9521] rounded-md transform transition-all duration-300 ease-in-out hover:translate-y-[-2px] hover:shadow-xl">
-         Dashboard
-     </a>
-     
-        {% else %}
-        <a href="{% url 'core:signup' %}" class="px-6 py-4 text-lg font-semibold bg-[#F5EEEA] rounded-lg text-black hover:bg-[#dd9521] hover:text-white transition rounded-full  transition-all duration-300 ease-in-out ">Signup</a>
-        <a href="{% url 'core:login' %}" class="px-6 py-4 text-lg font-semibold bg-[#BDB198] rounded-lg text-black hover:bg-[#dd9521] hover:text-white transition rounded-full  transition-all duration-300 ease-in-out ">Login</a>
-        {% endif %}
-      </div>
-    </nav>
+    <style>
+      @keyframes fadeInDown {
+          0% {
+              opacity: 0;
+              transform: translateY(-20px);
+          }
+          100% {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+      </style>
+      
+      <nav class="py-6 px-6 flex justify-between items-center bg-[#0C2A24] shadow-lg sticky top-0 z-50 opacity-0" style="animation: fadeInDown 0.5s ease-out forwards;">
+            <a href="/" class="text-2xl font-serif font-semibold text-white transform transition-all duration-300 ease-in-out hover:scale-105"> The Retro Room </a>
+          
+            <div class="space-x-6">
+              <a href="{% url 'item:new' %}" class="inline-block text-lg font-semibold text-white transform transition-all duration-300 ease-in-out hover:scale-105">New Item</a>
+              <a href="{% url 'item:items' %}" class="inline-block text-lg font-semibold text-white transform transition-all duration-300 ease-in-out hover:scale-105">Browse</a>
+          
+              {% if request.user.is_authenticated %}
+              <a href="{% url 'conversation:inbox' %}" class="inline-block px-6 py-2 text-lg font-semibold text-white bg-[#7f5539] rounded-md transform transition-all duration-300 ease-in-out hover:translate-y-[-2px] hover:shadow-xl">
+               Inbox
+              </a>
+        
+              <a href="{% url 'dashboard:index' %}" class="inline-block px-6 py-2 text-lg font-semibold text-white bg-[#7f5539] rounded-md transform transition-all duration-300 ease-in-out hover:translate-y-[-2px] hover:shadow-xl">
+               Dashboard
+              </a>
+           
+              {% else %}
+              <a href="{% url 'core:signup' %}" class="px-6 py-4 text-lg font-semibold bg-[#F5EEEA] rounded-lg text-black hover:bg-[#7f5539] hover:text-white  transition-all duration-300 ease-in-out">Signup</a>
+              <a href="{% url 'core:login' %}" class="px-6 py-4 text-lg font-semibold bg-[#BDB198] rounded-lg text-black hover:bg-[#7f5539] hover:text-white transition-all duration-300 ease-in-out">Login</a>
+              {% endif %}
+            </div>
+      </nav>
     <div class="px-6 py-6">
       {% block content %}
       {% endblock %}
@@ -44,8 +61,8 @@
         <!-- About Section -->
         <div class="w-2/3 pr-10">
           <h3 class="mb-5 font-semibold text-gray-300">About Us</h3>
-          <p class="text-md text-gray-400">
-            ShopEase is your go-to online marketplace for buying and selling high-quality used items at affordable prices. Whether you're looking for electronics, furniture, clothing, or more, we ensure that every product on our platform is verified for quality and value. Our mission is to make second-hand shopping simple, convenient, and trustworthy, providing you with the best deals without compromising on quality.
+          <p class="text-md text-[#6A857D]">
+            The Retro Roomis your go-to marketplace for buying and selling vintage treasures that add timeless character to your home. Whether you're looking for classic record players, retro furniture, vintage clothing, or unique collectibles, we ensure that every item on our platform is carefully verified for quality and authenticity.
           </p>
         </div>
     
@@ -54,16 +71,16 @@
           <h3 class="mb-5 font-semibold text-gray-300">Quick Links</h3>
           <ul class="space-y-2">
             <li>
-              <a href="#" class="text-lg text-[#dd9521] hover:text-[#B57202]">About</a>
+              <a href="#" class="text-lg text-[#6A857D] ">About</a>
             </li>
             <li>
-              <a href="{% url 'core:contact' %}" class="text-lg text-[#dd9521] hover:text-[#B57202]">Contact</a>
+              <a href="{% url 'core:contact' %}" class="text-lg text-[#6A857D] ">Contact</a>
             </li>
             <li>
-              <a href="#" class="text-lg text-[#dd9521] hover:text-[#B57202]">Privacy Policy</a>
+              <a href="#" class="text-lg text-[#6A857D] ">Privacy Policy</a>
             </li>
             <li>
-              <a href="#" class="text-lg text-[#dd9521] hover:text-[#B57202]">Terms of Use</a>
+              <a href="#" class="text-lg text-[#6A857D] ">Terms of Use</a>
             </li>
           </ul>
         </div>
@@ -86,9 +103,11 @@
       </div>
     
       <!-- Copyright -->
-      <div class="mt-6 text-center text-gray-400">
-        <p>&copy; 2025 ShopEase. All rights reserved.</p>
+      <div class="mt-6 text-center text-[#6A857D]">
+        <p>&copy; 2025 The Retro Room. All rights reserved.</p>
       </div>
     </footer>
+
+    
 
   </body>

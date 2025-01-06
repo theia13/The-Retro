@@ -1,59 +1,85 @@
 {% extends 'core/base.html' %}
 
-{% block title %} {{ item.name }}{% endblock %}
+{% block title %} {{ item.name }} {% endblock %}
 
 {% block content %}
-<div class="grid grid-cols-5 gap-6">
-    <div class="col-span-3 ">
-        <img src="{{ item.image.url }}" class="rounded-xl">
-        
-    </div>
-
-    <div class="col-span-2 p-6 bg-gray-100 rounded-xl">
-        <h1 class="mb-6 text-3xl">{{ item.name }}</h1>
-        <p class="text-gray-500"><strong>Price: </strong>{{ item.price }}</p>
-        <p class="text-gray-500"><strong>Seller: </strong>{{ item.created_by.username }}</p>
-
-        {% if item.description %}
-        <p class="text-gray-700">
-            <strong class="text-gray-500"> Description: </strong><br> 
-            {{ item.description }}
-        </p>
-        {% endif %}
- 
-        {% if request.user == item.created_by %}
-        <div class="mt-6 p-6 bg-white rounded-xl">
-            <p> This is your item! </p>
-            <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">Edit</a>
-            <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">Delete</a>
+<div class="max-w-4xl mx-auto p-6 bg-[#faf4f0] rounded-lg mb-10">
+    <div class="grid md:grid-cols-2 gap-8">
+        <!-- Product Image Section -->
+        <div class="overflow-hidden bg-[#f5f0ec] rounded-lg w-full max-w-md h-[500px]"> 
+            <img  
+                src="{{ item.image.url }}"  
+                alt="{{ item.name }}"  
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+            /> 
         </div>
-        {% else %}
+        
 
-        <a href="{% url 'conversation:new' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Contact seller</a>
+        <!-- Product Details Section -->
+        <div class="space-y-6">
+            <!-- Product Title, Badge, and Price -->
+            <div>
+                <span class="inline-block mb-2 px-3 py-1 bg-[#61827E] text-white text-sm font-semibold rounded-lg">
+                    {% if item.in_stock %} In Stock {% else %} In Stock {% endif %}
+                </span>
+                <h1 class="text-3xl font-bold mb-2 text-[#06373E]">{{ item.name }}</h1>
+                <div class="flex items-center gap-4">
+                    <span class="text-2xl font-semibold text-[#345D5E]">${{ item.price }}</span>
+                </div>
+            </div>
 
-        {% endif %}
+            <!-- Product Description and Buttons -->
+            <div class="space-y-4">
+                <p class="text-[#06373E]">
+                    {{ item.description|default:"No description available." }}
+                </p>
 
-    </div>
+            
+        {% if request.user == item.created_by %}
+        <div class="flex gap-4 pt-4">
+            <a href="{% url 'item:edit' item.id %}" class="px-6 py-3 bg-[#0c231e] text-white rounded-lg hover:bg-[#163832] transition">
+                Edit
+            </a>
+            <a href="{% url 'item:delete' item.id %}" class="px-6 py-3 bg-[#cd4f4f] text-white rounded-lg hover:bg-[#b54444] transition">
+                Delete
+            </a>
+        </div>
+    {% else %}  
+    <a href="{% url 'conversation:new' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-[#06373E] text-white rounded-xl transform transition duration-300 hover:bg-[#345D5E] hover:shadow-lg">
+        Contact seller
+    </a>
+    
+    {% endif %}
+</div>
+
+            <!-- Product Details Card -->
+            <div class="bg-[#f5f0ec] border border-[#e8e0d8] rounded-lg px-6 py-2">
+                <h2 class="text-lg font-semibold text-[#06373E] mb-4">Product Details</h2>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <span class="font-semibold text-[#06373E]">Material:</span>
+                        <p class="text-[#06373E]">Knitted Cotton Blend</p>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-[#06373E]">Style:</span>
+                        <p class="text-[#06373E]">Poncho Style</p>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-[#06373E]">Features:</span>
+                        <p class="text-[#06373E]">Fringe Detail</p>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-[#06373E]">Care:</span>
+                        <p class="text-[#06373E]">Hand wash recommended</p>
+                    </div>
+                </div>
+            </div>
+</div>
+
+             
 
 </div>
-<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-  <h2 class="mb-12 text-2xl text-center">Related items</h2>
 
-  <div class="grid grid-cols-3 gap-3">
-      {% for item in related_items %}
-          <div>
-              <a href="{% url 'item:detail' item.id %}">
-                  <div>
-                      <img src="{{ item.image.url }}" class="rounded-t-xl">
-                  </div>
 
-                  <div class="p-6 bg-white rounded-b-xl">
-                      <h2 class="text-2xl">{{ item.name }}</h2>
-                      <p class="text-gray-500">Price: {{ item.price }}</p>
-                  </div>
-              </a>
-          </div>
-      {% endfor %}
-  </div>
-</div>
+
 {% endblock %}
