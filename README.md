@@ -3,21 +3,32 @@
   The platform connects buyers and sellers of unique vintage items, ensuring quality and trust in every transaction. </p>
 
 <h2> Features <h2>
-Buy & Sell Vintage Items: A wide range of vintage categories including furniture, clothing, electronics, and more.
+  <p> Buy & Sell Vintage Items: A wide range of vintage categories including furniture, clothing, electronics, and more.
 Product Verification: Each product listed is verified for authenticity and quality.
 User Authentication: Secure sign-up and login for users to manage their listings and purchases.
 Search & Filter: Easily search and filter items based on categories and other criteria.
-Product Details: Detailed information, images, and pricing for each item.
+Product Details: Detailed information, images, and pricing for each item. </p>
+
   
 <h2> Tech Stack</h2>
+<ul> 
+  <li>  Backend: Django (Python)</li>
+   <li> Frontend: HTML, CSS, Tailwind CSS</li>
+   <li> Database: SQLite (for demo purposes) / PostgreSQL (for production) </li>
+ 
+<h1>Version Control: Git & GitHub  </h1>
 
-Backend: Django (Python)
-Frontend: HTML, CSS, Tailwind CSS
-Database: SQLite (for demo purposes) / PostgreSQL (for production)
-Version Control: Git & GitHub
+
+
+</ul>
+
 <h2> Installation</h2>
 <h3> Prerequisites </h3>
+<ul>
+  <li>Python 3.8+</li>
+  <li>Django 3.2+</li>
+  <li> Tailwind CSS (using CDN for now)</li>
+</ul>
 
-Python 3.8+
-Django 3.2+
-Tailwind CSS (using CDN for now)
+
+
