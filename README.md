@@ -3,11 +3,18 @@
   The platform connects buyers and sellers of unique vintage items, ensuring quality and trust in every transaction. </p>
 
 <h2> Features </h2>
-<p> Buy & Sell Vintage Items: A wide range of vintage categories including furniture, clothing, electronics, and more.
-Product Verification: Each product listed is verified for authenticity and quality.
-User Authentication: Secure sign-up and login for users to manage their listings and purchases.
-Search & Filter: Easily search and filter items based on categories and other criteria.
-Product Details: Detailed information, images, and pricing for each item. </p>
+<ul>
+  <li>  Buy & Sell Vintage Items: A wide range of vintage categories including furniture, clothing, electronics, and more.</li>
+  <li> Product Verification: Each product listed is verified for authenticity and quality.</li>
+    <li>User Authentication: Secure sign-up and login for users to manage their listings and purchases. </li>
+    <li>Search & Filter: Easily search and filter items based on categories and other criteria. </li>
+    <li>Product Details: Detailed information, images, and pricing for each item. </p> </li>
+  
+</ul>
+
+
+
+
 
   
 <h2>Tech Stack</h2>
