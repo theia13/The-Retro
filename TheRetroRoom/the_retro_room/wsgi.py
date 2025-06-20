@@ -1,5 +1,5 @@
 """
-WSGI config for ShopEase project.
+WSGI config for The Retro Room project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ShopEase.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'the_retro_room.settings')
 
 application = get_wsgi_application()
