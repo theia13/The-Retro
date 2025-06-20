@@ -21,7 +21,7 @@
 <ul> 
   <li>  Backend: Django (Python)</li>
    <li> Frontend: HTML, CSS, Tailwind CSS</li>
-   <li> Database: SQLite (for demo purposes) / PostgreSQL (for production) </li>
+   <li> Database: SQLite (for demo purposes) </li>
  
 <h1>Version Control: Git & GitHub  </h1>
 
@@ -34,7 +34,7 @@
 <ul>
   <li>Python 3.8+</li>
   <li>Django 3.2+</li>
-  <li> Tailwind CSS (using CDN for now)</li>
+  <li> Tailwind CSS</li>
 </ul>
 
 
