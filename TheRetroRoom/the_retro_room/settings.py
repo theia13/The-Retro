@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-h$#3-#a=u_k(e=y$89c5_snvaaukltj1-ia)!rtr5*93(sn#!i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['the-retro-room.onrender.com']
+
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
